@@ -339,7 +339,9 @@
                 p.strokeWeight(2);
                 p.beginShape();
                 baseShape.forEach(pt => {
-                    p.vertex(pt.x, pt.y);
+                    let newX = pt.x * cosT - pt.y * sinT;
+                    let newY = pt.x * sinT + pt.y * cosT;
+                    p.vertex(newX, newY);
                 });
                 p.endShape(p.CLOSE);
             };
