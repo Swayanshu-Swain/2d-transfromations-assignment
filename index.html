@@ -453,7 +453,15 @@
                 p.strokeWeight(2);
                 p.beginShape();
                 baseShape.forEach(pt => {
-                    p.vertex(pt.x, pt.y);
+                    let newX = pt.x;
+                    let newY = pt.y;
+                    if (refX) {
+                        newY = -newY;
+                    }
+                    if (refY) {
+                        newX = -newX;
+                    }
+                    p.vertex(newX, newY);
                 });
                 p.endShape(p.CLOSE);
             };
