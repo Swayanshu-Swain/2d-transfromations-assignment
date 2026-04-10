@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,15 +11,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <style>
         /* Custom range slider styling for a cleaner look */
+        
         input[type=range] {
-            accent-color: #4f46e5; /* Indigo 600 */
+            accent-color: #4f46e5;
+            /* Indigo 600 */
         }
+        
         canvas {
             border-radius: 0.5rem;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
         }
     </style>
 </head>
+
 <body class="bg-gray-50 min-h-screen p-4 md:p-8 font-sans text-gray-800">
 
     <div class="max-w-6xl mx-auto">
@@ -127,17 +132,46 @@
     <script>
         // Global state: The base geometric points for an 'F' shape
         // Shared across all sketch instances
-        const baseShape = [
-            {x: -20, y: -40}, // Bottom left of stem
-            {x: -20, y: 40},  // Top left of stem
-            {x: 30, y: 40},   // Top right of top bar
-            {x: 30, y: 20},   // Bottom right of top bar
-            {x: 0, y: 20},    // Inner corner top
-            {x: 0, y: 0},     // Inner corner middle-top
-            {x: 20, y: 0},    // Right of middle bar
-            {x: 20, y: -20},  // Bottom of middle bar
-            {x: 0, y: -20},   // Inner corner middle-bottom
-            {x: 0, y: -40}    // Bottom right of stem
+        const baseShape = [{
+                x: -20,
+                y: -40
+            }, // Bottom left of stem
+            {
+                x: -20,
+                y: 40
+            }, // Top left of stem
+            {
+                x: 30,
+                y: 40
+            }, // Top right of top bar
+            {
+                x: 30,
+                y: 20
+            }, // Bottom right of top bar
+            {
+                x: 0,
+                y: 20
+            }, // Inner corner top
+            {
+                x: 0,
+                y: 0
+            }, // Inner corner middle-top
+            {
+                x: 20,
+                y: 0
+            }, // Right of middle bar
+            {
+                x: 20,
+                y: -20
+            }, // Bottom of middle bar
+            {
+                x: 0,
+                y: -20
+            }, // Inner corner middle-bottom
+            {
+                x: 0,
+                y: -40
+            } // Bottom right of stem
         ];
 
         const CANVAS_SIZE = 280;
@@ -183,10 +217,10 @@
 
             p.draw = () => {
                 p.background(255);
-                
+
                 // Set origin to center, and Y-axis pointing UP (standard Cartesian)
                 p.translate(p.width / 2, p.height / 2);
-                p.scale(1, -1); 
+                p.scale(1, -1);
 
                 drawGridAndAxes(p);
 
@@ -267,7 +301,9 @@
                 p.strokeWeight(2);
                 p.beginShape();
                 baseShape.forEach(pt => {
-                    p.vertex(pt.x, pt.y);
+                    let newX = pt.x + tx;
+                    let newY = pt.y + ty;
+                    p.vertex(newX, newY);
                 });
                 p.endShape(p.CLOSE);
             };
@@ -418,4 +454,5 @@
         });
     </script>
 </body>
+
 </html>
